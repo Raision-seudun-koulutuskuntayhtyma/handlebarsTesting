@@ -1,0 +1,63 @@
+<body>
+    <h1 class="modern-header">Luokkamme sijainti on</h1>
+
+    {{!-- List of longitude and latitude values from database or server API as elements --}}
+    <h2>Desimaaliasteina</h2>
+
+    {{!-- Show coordinates sent from server: --}}
+    <ul>
+        <li id="lon">
+            {{lon}} itäistä pituutta 
+        </li>
+        <li id="lat">
+            {{lat}} pohjoista leveyttä 
+        </li>
+    </ul>
+
+    {{!-- Client side calculated values based on server data --}}
+    <h2>Asteina ja minuutteina</h2>
+    <ul>
+        <li id="lon2">
+             
+        </li>
+        <li id="lat2">
+            
+        </li>
+    </ul>
+    {{!-- Client side calculated value based on server data --}}
+    <h2>Uusi leveysaste:</h2>
+    <h2 id="new-lat"></h2>
+
+    {{!-- A client side script to convert decimal degrees to degrees and minutes --}}
+    <script>
+
+        // Read latitude and longitude values sent from server
+        let latitude = {{lat}}
+        let longitude = {{lon}}
+
+        // Convert decimal part of degrees to minutes
+        let latDegMin = (latitude - Math.floor(latitude)) * 60
+        let lonDegMin = (longitude - Math.floor(longitude)) * 60
+
+        // Set the converted values into corresponding elements in the page
+        document.getElementById('lat2').innerHTML = Math.floor(latitude) + "° " + latDegMin.toFixed(3) + "' pohjoista leveyttä"
+        document.getElementById('lon2').innerHTML = Math.floor(longitude) + "° " + lonDegMin.toFixed(3) + "' itäistä pituutta"
+    </script>
+
+    {{!-- A client side script to calculate new values from server side data read from elements in the page--}}
+    <script>
+        // Read lat element's value
+        let originalLatString = document.getElementById("lat").innerHTML;
+        
+        // Convert it into floating point number
+        let originalLat = parseFloat(originalLatString)
+
+        // Do math with it
+        let newLat = originalLat + 1.5
+
+        // Set value of element new-lat
+        document.getElementById('new-lat').innerHTML = newLat
+    </script>
+
+    
+</body>

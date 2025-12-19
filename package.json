@@ -1,0 +1,29 @@
+{
+  "name": "handlebarstesting",
+  "version": "1.0.0",
+  "description": "Testing handebars pages containing web maps",
+  "keywords": [
+    "Handlebars",
+    "Leaflet"
+  ],
+  "homepage": "https://github.com/MikaVainio/handlebarsTesting#readme",
+  "bugs": {
+    "url": "https://github.com/MikaVainio/handlebarsTesting/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MikaVainio/handlebarsTesting.git"
+  },
+  "license": "ISC",
+  "author": "Mika Vainio",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "express-handlebars": "^8.0.4"
+  }
+}

@@ -1,0 +1,24 @@
+<body>
+    <div id="map">
+        <h1 class="modern-header">Leaflet web map kohteesta {{buildingId}}</h1>
+        <div id="mapid" style="height: 600px;"></div>
+
+        <script>
+            // Initialize the map and set its view to the specified coordinates and zoom level
+            let rasekomap = L.map('mapid').setView([{{lat}}, {{lon}}], 13);
+
+            // Add a tile layer to the map (OpenStreetMap tiles)
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+                maxZoom: 19,
+            }).addTo(rasekomap);
+
+            // Add a marker at the specified coordinates
+            let marker = L.marker([{{lat}}, {{lon}}]).addTo(rasekomap);
+
+            // Popup for the marker
+            let info = 'EK3A'
+            marker.bindPopup(info).openPopup();
+        </script>
+    </div>
+</body>rs
