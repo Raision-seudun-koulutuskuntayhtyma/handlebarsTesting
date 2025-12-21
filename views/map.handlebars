@@ -1,24 +1,37 @@
 <body>
-    <div id="map">
-        <h1 class="modern-header">Leaflet web map kohteesta {{buildingId}}</h1>
-        <div id="mapid" style="height: 600px;"></div>
+    
+    {{!-- Invisible part of the page to store data elements for popups --}}
+    <div class="not-visible">
+        <div id="bid"> {{buildingId}}</div>
+    </div> 
+    <div>{{>menu}}</div>
+    <div class="container">
+        <div id="map">
+            <h1 class="modern-header">Leaflet-kartta Rasekon kampukselta</h1>
 
-        <script>
-            // Initialize the map and set its view to the specified coordinates and zoom level
-            let rasekomap = L.map('mapid').setView([{{lat}}, {{lon}}], 13);
+            {{!-- It is very important to define height for the map and give a id for it --}}
+            <div class="map-frame" id="mapid"></div>
 
-            // Add a tile layer to the map (OpenStreetMap tiles)
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
-                maxZoom: 19,
-            }).addTo(rasekomap);
+            <script>
+                // Initialize the map and set its view to the specified coordinates and zoom level
+                let rasekomap = L.map('mapid').setView([{{lat}}, {{lon}}], 16);
 
-            // Add a marker at the specified coordinates
-            let marker = L.marker([{{lat}}, {{lon}}]).addTo(rasekomap);
+                // Add a tile layer to the map (OpenStreetMap tiles)
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+                    maxZoom: 19,
+                }).addTo(rasekomap);
 
-            // Popup for the marker
-            let info = 'EK3A'
-            marker.bindPopup(info).openPopup();
-        </script>
+                // Add a marker at the specified coordinates
+                let marker = L.marker([{{lat}}, {{lon}}]).addTo(rasekomap);
+
+                // Popup for the marker
+                // For some reason popups can't read data directly from variables sent by app.js
+                // Data is read from invisible elements in the begining of the page
+                let info = document.getElementById('bid')
+                marker.bindPopup(info).openPopup();
+            </script>
+        </div>
     </div>
-</body>rs
+    
+</body>

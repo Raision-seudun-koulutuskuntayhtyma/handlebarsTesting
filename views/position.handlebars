@@ -1,10 +1,11 @@
 <body>
+    <div>{{>menu}}</div>
     <h1 class="modern-header">Luokkamme sijainti on</h1>
 
     {{!-- List of longitude and latitude values from database or server API as elements --}}
     <h2>Desimaaliasteina</h2>
 
-    {{!-- Show coordinates sent from server: --}}
+    {{!-- Show coordinates sent by server: --}}
     <ul>
         <li id="lon">
             {{lon}} itäistä pituutta 
@@ -15,7 +16,7 @@
     </ul>
 
     {{!-- Client side calculated values based on server data --}}
-    <h2>Asteina ja minuutteina</h2>
+    <h2>Asteina ja kaariminuutteina</h2>
     <ul>
         <li id="lon2">
              
@@ -36,12 +37,12 @@
         let longitude = {{lon}}
 
         // Convert decimal part of degrees to minutes
-        let latDegMin = (latitude - Math.floor(latitude)) * 60
-        let lonDegMin = (longitude - Math.floor(longitude)) * 60
+        let latArcMin = (latitude - Math.floor(latitude)) * 60
+        let lonArcMin = (longitude - Math.floor(longitude)) * 60
 
         // Set the converted values into corresponding elements in the page
-        document.getElementById('lat2').innerHTML = Math.floor(latitude) + "° " + latDegMin.toFixed(3) + "' pohjoista leveyttä"
-        document.getElementById('lon2').innerHTML = Math.floor(longitude) + "° " + lonDegMin.toFixed(3) + "' itäistä pituutta"
+        document.getElementById('lat2').innerHTML = Math.floor(latitude) + "° " + latArcMin.toFixed(3) + "' pohjoista leveyttä"
+        document.getElementById('lon2').innerHTML = Math.floor(longitude) + "° " + lonArcMin.toFixed(3) + "' itäistä pituutta"
     </script>
 
     {{!-- A client side script to calculate new values from server side data read from elements in the page--}}
