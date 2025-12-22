@@ -1,0 +1,33 @@
+<body>
+    <div>{{>menu}}</div>
+    <div class="container">
+
+        
+        <div id="map">
+            <h1 class="modern-header">Monia pisteitä sisältävä kartta</h1>
+
+            {{!-- It is very important to define height for the map and give a id for it --}}
+            <div class="map-frame" id="mapid"></div>
+
+            <script>
+                // Initialize the map and set its view to the specified coordinates and zoom level
+                let rasekomap = L.map('mapid').setView([{{maplat}}, {{maplon}}], 16);
+
+                // Add a tile layer to the map (OpenStreetMap tiles)
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+                    maxZoom: 19,
+                }).addTo(rasekomap);
+    
+            
+
+                
+            </script>
+        </div>
+    </div>
+    <div>
+            <script>
+                
+            </script>
+        </div>
+</body>

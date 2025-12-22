@@ -26,8 +26,9 @@
                 let marker = L.marker([{{lat}}, {{lon}}]).addTo(rasekomap);
 
                 // Popup for the marker
-                // For some reason popups can't read data directly from variables sent by app.js
-                // Data is read from invisible elements in the begining of the page
+                // If data is sent directly to popup, it will handel it as name of variable
+                // Building ID is read from invisible elements in the begining of the page using getElementById method
+                // It can also be translated into strin using `{{buildingId}}`-form
                 let info = document.getElementById('bid')
                 marker.bindPopup(info).openPopup();
             </script>

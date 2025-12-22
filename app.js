@@ -60,6 +60,32 @@ app.get('/map', (req, res) => {
     res.render('map', data)
 });
 
+app.get('/multipointMap', (req, res) => {
+
+    let maplat = 60.4786
+    let maplon = 22.1636
+
+    // Simulated data from database or external API
+     datalist= [{lat: 60.4786, lon: 22.1636, buildingId: 'EK3A'},
+                {lat: 60.478756, lon: 22.161683, buildingId: 'EK4A'},
+                {lat: 60.479208, lon: 22.159918, buildingId: 'PK1'}];
+    res.render('multipointMap', {maplat: maplat, maplon: maplon , data: datalist})
+});
+
+app.get('/dataAPI', (req, res) => {
+
+    // Send simulated JSON data to the client
+    let datalist = [{lat: 60.4786, lon: 22.1636, buildingId: 'EK3A'},
+                    {lat: 60.478756, lon: 22.161683, buildingId: 'EK4A'},
+                    {lat: 60.479208, lon: 22.159918, buildingId: 'PK1'}];
+    
+    jsonData = JSON.stringify(datalist);
+    res.json(jsonData);
+});
+
+app.get('/mapFromAPI', (req, res) => {
+    res.render('mapFromAPI');
+});
 // SERVER START
 // ------------
 app.listen(PORT)

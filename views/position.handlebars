@@ -1,34 +1,36 @@
 <body>
     <div>{{>menu}}</div>
     <h1 class="modern-header">Luokkamme sijainti on</h1>
+    <div class="container">
+        {{!-- List of longitude and latitude values from database or server API as elements --}}
+        <h2 class="olive-heading">Desimaaliasteina</h2>
 
-    {{!-- List of longitude and latitude values from database or server API as elements --}}
-    <h2>Desimaaliasteina</h2>
+        {{!-- Show coordinates sent by server: --}}
+        <ul class="big-list">
+            <li id="lon">
+                {{lon}} itäistä pituutta 
+            </li>
+            <li id="lat">
+                {{lat}} pohjoista leveyttä 
+            </li>
+        </ul>
 
-    {{!-- Show coordinates sent by server: --}}
-    <ul>
-        <li id="lon">
-            {{lon}} itäistä pituutta 
-        </li>
-        <li id="lat">
-            {{lat}} pohjoista leveyttä 
-        </li>
-    </ul>
-
-    {{!-- Client side calculated values based on server data --}}
-    <h2>Asteina ja kaariminuutteina</h2>
-    <ul>
-        <li id="lon2">
-             
-        </li>
-        <li id="lat2">
-            
-        </li>
-    </ul>
-    {{!-- Client side calculated value based on server data --}}
-    <h2>Uusi leveysaste:</h2>
-    <h2 id="new-lat"></h2>
-
+        {{!-- Client side calculated values based on server data --}}
+        <h2 class="olive-heading">Asteina ja kaariminuutteina</h2>
+        <ul class="big-list">
+            <li id="lon2">
+                
+            </li>
+            <li id="lat2">
+                
+            </li>
+        </ul>
+        {{!-- Client side calculated value based on server data --}}
+        <h2 class="olive-heading">Uusi leveysaste:</h2>
+        <ul class="big-list">
+        <li id="new-lat"></li>
+        </ul>
+    </div>
     {{!-- A client side script to convert decimal degrees to degrees and minutes --}}
     <script>
 

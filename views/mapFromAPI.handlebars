@@ -1,0 +1,39 @@
+<body>
+    </div> 
+    <div>{{>menu}}</div>
+    <div class="container">
+        <div id="map">
+            <h1 class="modern-header">Leaflet-kartta rajapinnan tarjoamista tiedoista</h1>
+
+            {{!-- It is very important to define height for the map and give a id for it --}}
+            <div class="map-frame" id="mapid"></div>
+
+            <script>
+                // Define an async function to get JSON data from the API and reder a map
+                const loadJsonData = async () => {
+                const response = await fetch('/dataAPI');
+                const jsonData = await response.json();
+
+                // Convert data back to javascript objects
+                const originalData = await JSON.parse(jsonData);
+
+                //Initialize the map and center the view to the 1st point and se Zoom level to 16
+                let rasekomap = L.map('mapid').setView([originalData[0].lat, originalData[0].lon], 16);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+                    maxZoom: 19,
+                }).addTo(rasekomap);
+                
+                // Loop all positions and add markers and their popups
+                originalData.forEach(element => {
+                    L.marker([element.lat, element.lon]).addTo(rasekomap).bindPopup(element.buildingId);    
+                })
+                }
+                
+                // Call the function
+                loadJsonData();
+            </script>
+        </div>
+    </div>
+    
+</body>

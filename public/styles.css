@@ -1,3 +1,16 @@
+:root {
+  --color-map-light-green: #CBFACC;
+  --color-map-dark-green: #ADD19E;
+  --color-map-light-olive: #C8D7AB;
+  --color-map-dark-olive: #B0BE93;
+  --color-map-light-yellow: #FFFFE5;
+  --color-map-light-grey: #EEEEEE;
+  --color-map-dark-grey: #D9D0C9;
+  --color-map-headings: #759269;
+  --color-map-heading-bright: #6D955D;
+
+
+}
 /* Set size to follow parent's size */
 * {
     box-sizing: border-box;
@@ -10,7 +23,7 @@
     margin: auto;
     overflow: auto;
     padding: 20px;
-    background: #ededed;
+    background: var(--color-map-light-gray);
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     /* Adjust width for smaller screens */
     @media (max-width: 800px) {
@@ -18,14 +31,30 @@
     }
 }
 
+/* Scale imge according to its parent element */
+.scaled-image {
+  width: inherit;
+}
 /* A style for headings above maps */
 .modern-header {
+    font-size: 3rem;
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: darkolivegreen;
+    color: var(--color-map-heading-bright);
 
 }
 
+.big-list {
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: x-large;
+}
+
+.olive-heading {
+  color: var(--color-map-headings);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: xx-large;
+  text-decoration: underline;
+}
 /* Setting to render map correctly */
 .map-frame {
   height: 80vh; /* It's essential to define map height */
@@ -38,7 +67,7 @@
 
 .menu-bar {
     flex-grow: 1;
-    background-color: darkolivegreen;
+    background-color: var(--color-map-heading-bright);
     color: whitesmoke;
     font-size:34px;
     padding-left: 20px
@@ -55,7 +84,7 @@
   z-index: 1; /* Sit on top */
   left: 0;
   top: 0;
-  background-color:darkolivegreen; 
+  background-color: var(--color-map-headings); 
   overflow-x: hidden; /* Disable horizontal scroll */
   transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
 }
@@ -82,7 +111,7 @@
 
 /* When you mouse over the navigation links, change their color */
 .overlay a:hover, .overlay a:focus {
-  color: lightblue;
+  color: var(--color-map-light-yellow);
 }
 
 /* Position the close button (top right corner) */
