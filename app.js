@@ -18,7 +18,7 @@ const app = express();
 // Define a TCP port to listen: read env or use 8080 if undefined
 const PORT = process.env.PORT || 8080
 
-// Set a folders for static files like css, images or icons
+// Set folders for static files like css, images or icons
 app.use(express.static('public'));
 app.use('/images', express.static('public/images'));
 app.use('/icons', express.static('public/icons'));
